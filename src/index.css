@@ -1,0 +1,20 @@
+* {
+  margin: 0 !important;
+  font-size: 0.9rem;
+}
+
+.navbar {
+  position: fixed;
+  z-index: 100;
+}
+.toolbar {
+  justify-content: space-between;
+}
+.desktop-drop {
+  margin-top: 1.5rem !important;
+}
+.desktop-drop input {
+  border: none;
+  border-bottom: 1px solid black;
+  width: 6rem;
+}

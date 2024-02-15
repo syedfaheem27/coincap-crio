@@ -1,38 +1,61 @@
-import styled from "styled-components";
-import Hamburger from "../UI/Hamburger";
+import Box from "@mui/material/Box";
+import CssBaseline from "@mui/material/CssBaseline";
+import Drawer from "@mui/material/Drawer";
 import { useContext } from "react";
-import { OpenContext } from "../context/openContext";
-import SideNav from "./SideNav";
-import Search from "../UI/Search";
 
-const Nav = styled.nav`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid green;
-  padding: 1rem;
-`;
+import { OpenContext } from "../context/OpenContext";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import SideDrawer from "./SideDrawer";
 
-const LogoContainer = styled.div`
-  width: 2.75rem;
-  padding: 0.25rem;
-  border: 1px solid red;
-`;
+import { drawerWidth, navItems } from "../utils/constants";
+import MobileNav from "./MobileNav";
+import DesktopNav from "./DesktopNav";
 
-const Navbar = () => {
-  const { open } = useContext(OpenContext);
+function NavBar(props) {
+  const { window } = props;
+  const { opens, setOpens } = useContext(OpenContext);
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const handleDrawerToggle = () => {
+    setOpens((prevState) => !prevState);
+  };
+
+  const container =
+    window !== undefined ? () => window().document.body : undefined;
+
   return (
     <>
-      <Nav>
-        <Search />
-        <LogoContainer>
-          <img src="/coincap-logo.png" alt="Coin Cap logo" />
-        </LogoContainer>
-        <Hamburger />
-      </Nav>
-      {open && <SideNav />}
+      <Box sx={{ display: "flex" }} className={props.className}>
+        <CssBaseline />
+        {matches && <DesktopNav navItems={navItems} matches={matches} />}
+
+        {!matches && <MobileNav />}
+
+        <nav>
+          <Drawer
+            container={container}
+            variant="temporary"
+            open={opens}
+            onClose={handleDrawerToggle}
+            ModalProps={{
+              keepMounted: true, // Better open performance on mobile.
+            }}
+            sx={{
+              display: { xs: "block", sm: "none" },
+              "& .MuiDrawer-paper": {
+                boxSizing: "border-box",
+                width: drawerWidth,
+              },
+            }}
+          >
+            <SideDrawer navItems={navItems} />
+          </Drawer>
+        </nav>
+      </Box>
     </>
   );
-};
+}
 
-export default Navbar;
+export default NavBar;

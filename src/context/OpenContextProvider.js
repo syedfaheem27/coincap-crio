@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { OpenContext } from "./openContext";
+import { OpenContext } from "./OpenContext";
 
 const OpenContextProvider = ({ children }) => {
-  const [open, setOpen] = useState(false);
+  const [opens, setOpens] = useState(false);
   return (
-    <OpenContext.Provider value={{ open, setOpen }}>
+    <OpenContext.Provider value={{ opens, setOpens }}>
       {children}
     </OpenContext.Provider>
   );
