@@ -34,6 +34,7 @@ const HeroMobile = () => {
         color: theme.palette.primary.main,
         border: "1px solid red",
         width: "100%",
+        marginBottom: "4rem !important",
       }}
     >
       <AccordionSummary

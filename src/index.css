@@ -17,3 +17,21 @@
   border-bottom: 1px solid black;
   width: 6rem;
 }
+.coin-container {
+  border: 3px solid red;
+  position: relative;
+  top: -5rem;
+  width: 100%;
+  max-width: 1196px;
+  margin: 0 auto !important;
+}
+.coin-grid {
+  max-width: 95%;
+  margin: 0 auto !important;
+}
+.coin-item {
+  border-radius: 0 !important;
+  text-align: left !important;
+  font-size: 0.65rem !important;
+  font-weight: bold !important;
+}

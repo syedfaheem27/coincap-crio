@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import HeroDektop from "./components/HeroDektop";
+import CoinTable from "./components/CoinTable";
 
 const theme = createTheme({
   palette: {
@@ -42,6 +43,7 @@ function App() {
         {!matches && <HeroMobile />}
         {matches && <HeroDektop />}
       </HeroContainer>
+      <CoinTable />
     </ThemeProvider>
   );
 }
