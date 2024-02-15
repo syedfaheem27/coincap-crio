@@ -44,7 +44,7 @@ const HeroMobile = () => {
         aria-controls="panel1-content"
         id="panel1-header"
       >
-        Accordion 1
+        Market Snapshot
       </AccordionSummary>
       <AccordionDetails>
         <AccordionUl>
