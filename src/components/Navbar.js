@@ -26,35 +26,33 @@ function NavBar(props) {
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <>
-      <Box sx={{ display: "flex" }} className={props.className}>
-        <CssBaseline />
-        {matches && <DesktopNav navItems={navItems} matches={matches} />}
+    <Box>
+      <CssBaseline />
+      {matches && <DesktopNav navItems={navItems} matches={matches} />}
 
-        {!matches && <MobileNav />}
+      {!matches && <MobileNav />}
 
-        <nav>
-          <Drawer
-            container={container}
-            variant="temporary"
-            open={opens}
-            onClose={handleDrawerToggle}
-            ModalProps={{
-              keepMounted: true, // Better open performance on mobile.
-            }}
-            sx={{
-              display: { xs: "block", sm: "none" },
-              "& .MuiDrawer-paper": {
-                boxSizing: "border-box",
-                width: drawerWidth,
-              },
-            }}
-          >
-            <SideDrawer navItems={navItems} />
-          </Drawer>
-        </nav>
-      </Box>
-    </>
+      <nav>
+        <Drawer
+          container={container}
+          variant="temporary"
+          open={opens}
+          onClose={handleDrawerToggle}
+          ModalProps={{
+            keepMounted: true, // Better open performance on mobile.
+          }}
+          sx={{
+            display: { xs: "block", sm: "none" },
+            "& .MuiDrawer-paper": {
+              boxSizing: "border-box",
+              width: drawerWidth,
+            },
+          }}
+        >
+          <SideDrawer navItems={navItems} />
+        </Drawer>
+      </nav>
+    </Box>
   );
 }
 

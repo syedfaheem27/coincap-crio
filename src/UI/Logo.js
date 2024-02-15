@@ -1,8 +1,9 @@
 import styled from "styled-components";
 
 const LogoContainer = styled.div`
-  width: 5rem;
+  width: 4.25rem;
   height: 2rem;
+  margin-right: 0.25rem !important;
 `;
 
 const StyledImg = styled.img`

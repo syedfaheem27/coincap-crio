@@ -3,12 +3,11 @@
   font-size: 0.9rem;
 }
 
-.navbar {
-  position: fixed;
-  z-index: 100;
-}
 .toolbar {
   justify-content: space-between;
+  margin: 0 auto !important;
+  width: 100%;
+  max-width: 1196px;
 }
 .desktop-drop {
   margin-top: 1.5rem !important;

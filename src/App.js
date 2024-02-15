@@ -1,6 +1,10 @@
+import styled from "styled-components";
 import HeroMobile from "./components/HeroMobile";
 import Navbar from "./components/Navbar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import HeroDektop from "./components/HeroDektop";
+
 const theme = createTheme({
   palette: {
     primary: {
@@ -17,11 +21,27 @@ const theme = createTheme({
     },
   },
 });
+
+const HeroContainer = styled.section`
+  background-color: black;
+  width: 100%;
+  min-height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 7rem 1rem 3rem;
+`;
+
 function App() {
+  const matches = useMediaQuery(theme.breakpoints.up("sm"));
+
   return (
     <ThemeProvider theme={theme}>
-      <Navbar className="navbar" />
-      <HeroMobile />
+      <Navbar />
+      <HeroContainer>
+        {!matches && <HeroMobile />}
+        {matches && <HeroDektop />}
+      </HeroContainer>
     </ThemeProvider>
   );
 }

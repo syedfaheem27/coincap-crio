@@ -8,8 +8,10 @@ const Container = styled.div`
 `;
 
 const Input = styled.input`
-  width: 3.2rem;
-  border: none;
+  width: ${({ $widthLen }) => `${$widthLen + 5}ch`};
+  border: 1px solid black;
+  border-radius: 4px;
+  background-color: inherit;
   &:focus {
     border: none;
     outline: none;
@@ -27,6 +29,7 @@ const DropDown = ({ options, className }) => {
         id="currency"
         placeholder={options[0]}
         defaultValue={options[0]}
+        $widthLen={options[0].length}
       />
       <datalist id="currencies">
         {options.map((op, i) => {

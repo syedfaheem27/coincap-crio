@@ -4,15 +4,7 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/material/styles";
-
-const MarketSnap = [
-  "Market Cap",
-  "Exchange Vol",
-  "Assets",
-  "Exchanges",
-  "Markets",
-  "BTC Dom Index",
-];
+import { MarketSnap } from "../utils/constants";
 
 const AccordionUl = styled.ul`
   list-style-type: none;
@@ -33,7 +25,7 @@ const AccordionLi = styled.li`
   padding: 0 0.5rem;
 `;
 
-const SummaryAccordion = () => {
+const HeroMobile = () => {
   const theme = useTheme();
   return (
     <Accordion
@@ -66,24 +58,6 @@ const SummaryAccordion = () => {
         </AccordionUl>
       </AccordionDetails>
     </Accordion>
-  );
-};
-
-const HeroContainer = styled.section`
-  background-color: black;
-  width: 100%;
-  min-height: 10rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 5rem 1rem 0;
-`;
-
-const HeroMobile = () => {
-  return (
-    <HeroContainer>
-      <SummaryAccordion />
-    </HeroContainer>
   );
 };
 

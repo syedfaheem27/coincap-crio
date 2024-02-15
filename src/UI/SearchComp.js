@@ -47,7 +47,7 @@ const SearchComponent = ({ matches }) => {
   // }, []);
 
   return (
-    <>
+    <div style={{ display: "flex", gap: matches ? "0.25rem" : "" }}>
       <SearchContainer>
         <SearchInput
           $expanded={isExpanded.toString()}
@@ -69,7 +69,7 @@ const SearchComponent = ({ matches }) => {
           }}
         />
       )}
-    </>
+    </div>
   );
 };
 

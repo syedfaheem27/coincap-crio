@@ -10,9 +10,13 @@ import { useTheme } from "@mui/material/styles";
 function DesktopNav({ navItems, matches }) {
   const theme = useTheme();
   return (
-    <AppBar component="nav">
+    <AppBar component="nav" sx={{ border: "3px solid green" }}>
       <Toolbar className="toolbar">
-        <Box sx={{ display: { xs: "none", sm: "block" } }}>
+        <Box
+          sx={{
+            display: { xs: "none", sm: "block" },
+          }}
+        >
           {navItems.map((item, idx) => {
             if (idx > 2) return null;
             return (
@@ -23,8 +27,10 @@ function DesktopNav({ navItems, matches }) {
           })}
         </Box>
         <Logo />
-        <DropDown options={["ETH", "ETB", "BTC"]} />
-        <DropDown options={["English", "French", "Spanish"]} />
+        <Box display="flex" sx={{ display: "flex", gap: "0.5rem" }}>
+          <DropDown options={["ETH", "ETB", "BTC"]} />
+          <DropDown options={["English", "French", "Spanish"]} />
+        </Box>
 
         <SearchComponent matches={matches} />
       </Toolbar>
