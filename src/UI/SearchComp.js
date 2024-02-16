@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Button from "@mui/material/Button";
 import SearchIcon from "@mui/icons-material/Search";
 
 import styled from "styled-components";
 import SettingsIcon from "@mui/icons-material/Settings";
+import { SearchContext } from "../context/SearchContext";
 
 const SearchContainer = styled.div`
   display: flex;
@@ -34,6 +35,7 @@ const SearchIconDiv = styled.div`
 //TODO: Add functioanlity to the settings icon
 const SearchComponent = ({ matches }) => {
   const [isExpanded, setExpanded] = useState(false);
+  const { searchQuery, setSearchQuery } = useContext(SearchContext);
 
   const toggleSearch = () => {
     setExpanded(!isExpanded);
@@ -52,6 +54,8 @@ const SearchComponent = ({ matches }) => {
         <SearchInput
           $expanded={isExpanded.toString()}
           placeholder={isExpanded ? "Search..." : ""}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          value={searchQuery}
         />
         <SearchIconDiv onClick={toggleSearch}>
           <SearchIcon />

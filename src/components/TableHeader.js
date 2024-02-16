@@ -22,39 +22,56 @@ const TableHeader = () => {
     <>
       {matches_sm && (
         <Grid item xs={1}>
-          <Item className="coin-item">Rank</Item>
+          <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+            Rank
+          </Item>
         </Grid>
       )}
       <Grid item xs={matches_md ? 3 : 4}>
-        <Item className="coin-item">Name</Item>
+        <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+          Name
+        </Item>
       </Grid>
       <Grid item xs={matches_md ? 1 : matches_sm ? 1 : 4}>
-        <Item className="coin-item">Price</Item>
+        <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+          Price
+        </Item>
       </Grid>
       {matches_sm && (
         <Grid item xs={2}>
-          <Item className="coin-item">Market Cap</Item>
+          <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+            Market Cap
+          </Item>
         </Grid>
       )}
 
       {matches_md && (
         <>
           <Grid item xs={1}>
-            <Item className="coin-item">VWAP(24Hr)</Item>
+            <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+              VWAP(24Hr)
+            </Item>
           </Grid>
           <Grid item xs={1}>
-            <Item className="coin-item">Supply</Item>
+            <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+              Supply
+            </Item>
           </Grid>
         </>
       )}
 
       {matches_sm && (
         <Grid item xs={matches_md ? 1 : 2}>
-          <Item className="coin-item"> {matches_sm ? "Volume" : ""}(24Hr)</Item>
+          <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+            {" "}
+            {matches_sm ? "Volume" : ""}(24Hr)
+          </Item>
         </Grid>
       )}
       <Grid item xs={matches_md ? 2 : matches_sm ? 2 : 4}>
-        <Item className="coin-item">Change(24Hr)</Item>
+        <Item className="coin-item" sx={{ color: "#0a0a0a" }}>
+          Change(24Hr)
+        </Item>
       </Grid>
     </>
   );
