@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import HeroDektop from "./components/HeroDektop";
 import CoinTable from "./components/CoinTable";
+import Footer from "./components/Footer";
 
 const theme = createTheme({
   palette: {
@@ -44,6 +45,7 @@ function App() {
         {matches && <HeroDektop />}
       </HeroContainer>
       <CoinTable />
+      <Footer />
     </ThemeProvider>
   );
 }
