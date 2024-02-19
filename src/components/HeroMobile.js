@@ -4,12 +4,17 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useTheme } from "@mui/material/styles";
-import { MarketSnap } from "../utils/constants";
+import {
+  MarketSnap,
+  getExchangeVolume,
+  getTotalMarketCap,
+} from "../utils/constants";
+import { useContext } from "react";
+import { DataContext } from "../context/DataContext";
 
 const AccordionUl = styled.ul`
   list-style-type: none;
   padding: 1rem;
-  border: 1px solid red;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -21,18 +26,26 @@ const AccordionLi = styled.li`
   flex-grow: 1;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid green;
   padding: 0 0.5rem;
 `;
 
 const HeroMobile = () => {
   const theme = useTheme();
+  const { data } = useContext(DataContext);
+
+  let marketOverview = MarketSnap.map((m) => {
+    if (m.startsWith("Market Cap")) return `${m}+${getTotalMarketCap(data)}`;
+    if (m.startsWith("Exchange Vol")) return `${m}+${getExchangeVolume(data)}`;
+    if (m.startsWith("BTC")) return `${m}+52.1%`;
+
+    return `${m}+ 256`;
+  });
+
   return (
     <Accordion
       sx={{
         backgroundColor: "inherit",
         color: theme.palette.primary.main,
-        border: "1px solid red",
         width: "100%",
         marginBottom: "4rem !important",
       }}
@@ -48,11 +61,19 @@ const HeroMobile = () => {
       </AccordionSummary>
       <AccordionDetails>
         <AccordionUl>
-          {MarketSnap.map((item, idx) => {
+          {marketOverview.map((item, idx) => {
+            const [identifier, val] = item.split("+");
+            let num;
+            if (identifier === "Market Cap")
+              num = `$ ${Number(val).toFixed(2)} t`;
+            else if (identifier === "Exchange Vol")
+              num = `${Number(val).toFixed(2)} b`;
+            else num = val;
+
             return (
               <AccordionLi key={`${idx}${item}`}>
-                <div>{item} :</div>
-                <div>%%PLACEHOLDER%%</div>
+                <div>{identifier} :</div>
+                <div>{num}</div>
               </AccordionLi>
             );
           })}

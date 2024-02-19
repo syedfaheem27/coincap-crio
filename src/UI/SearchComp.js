@@ -41,12 +41,6 @@ const SearchComponent = ({ matches }) => {
     setExpanded(!isExpanded);
   };
 
-  // useEffect(() => {
-  //   const closeSearch = () => setExpanded(false);
-  //   document.addEventListener("click", closeSearch, false);
-
-  //   return () => document.removeEventListener("click", closeSearch);
-  // }, []);
 
   return (
     <div style={{ display: "flex", gap: matches ? "0.25rem" : "" }}>
@@ -69,7 +63,6 @@ const SearchComponent = ({ matches }) => {
             margin: "0",
             pl: "0",
             pr: "0",
-            border: "1px solid red",
           }}
         />
       )}
